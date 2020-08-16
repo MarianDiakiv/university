@@ -15,7 +15,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void save(Role role) {
-        System.out.println(role.getNameRole());
+        System.out.println("NAme Role  =  "+role.getNameRole());
         roleRepository.save(role);
     }
 

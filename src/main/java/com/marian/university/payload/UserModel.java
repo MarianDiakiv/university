@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserModel {
-    private Long id;
+    private Integer id;
     private String username;
     private  String email;
     private  String token;
@@ -32,7 +32,7 @@ public class UserModel {
                 .map(item-> item.getAuthority())
                 .collect(Collectors.toList());
     }
-    public UserModel(Long id, String username, String email, String token, String password, List<String> roles) {
+    public UserModel(Integer id, String username, String email, String token, String password, List<String> roles) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -45,11 +45,11 @@ public class UserModel {
     public UserModel() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

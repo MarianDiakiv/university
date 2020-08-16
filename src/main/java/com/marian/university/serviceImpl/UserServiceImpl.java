@@ -1,5 +1,6 @@
 package com.marian.university.serviceImpl;
 
+import com.marian.university.entity.ERoles;
 import com.marian.university.entity.User;
 import com.marian.university.repository.UserRepository;
 import com.marian.university.service.UserService;
@@ -21,5 +22,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User getOne(int id) {
+        return userRepository.getOne(id);
+    }
+
+    @Override
+    public List<User> getAllTeacher() {
+        return userRepository.getUserByRole(ERoles.ROLE_TEACHER);
     }
 }

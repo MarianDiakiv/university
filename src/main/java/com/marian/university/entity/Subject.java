@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="\"subject\"")
+//@Table(name="\"subject\"")
+@Table(name = "subject")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +38,21 @@ public class Subject {
     public void setNamesubject(String namesubject) {
         this.namesubject = namesubject;
     }
+
+    public List<TeacherLessonPrice> getTeacherLessonPriceList() {
+        return teacherLessonPriceList;
+    }
+
+    public void setTeacherLessonPriceList(List<TeacherLessonPrice> teacherLessonPriceList) {
+        this.teacherLessonPriceList = teacherLessonPriceList;
+    }
+
+    public List<Lesson> getLessonList() {
+        return lessonList;
+    }
+
+    public void setLessonList(List<Lesson> lessonList) {
+        this.lessonList = lessonList;
+    }
+
 }

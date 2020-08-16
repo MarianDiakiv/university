@@ -1,17 +1,21 @@
 package com.marian.university.entity;
 
+import org.springframework.data.annotation.TypeAlias;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="\"users\"", uniqueConstraints = {@UniqueConstraint(columnNames = "username"),
-@UniqueConstraint(columnNames = "email")})
+//@Table(name="\"users\"", uniqueConstraints = {@UniqueConstraint(columnNames = "username"),
+//@UniqueConstraint(columnNames = "email")})
+@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int  id;
 
     @Column(name = "username")
     private String userName;
@@ -20,6 +24,8 @@ public class User {
     @Column(name="password")
 //    @Size(max = 100)
     private String password;
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -44,11 +50,11 @@ public class User {
     public User() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -82,5 +88,21 @@ public class User {
 
     public void setRole(Set<Role> role) {
         this.role = role;
+    }
+
+    public TeacherDetail getTeacherDetail() {
+        return teacherDetail;
+    }
+
+    public void setTeacherDetail(TeacherDetail teacherDetail) {
+        this.teacherDetail = teacherDetail;
+    }
+
+    public StudentDetails getStudentDetails() {
+        return studentDetails;
+    }
+
+    public void setStudentDetails(StudentDetails studentDetails) {
+        this.studentDetails = studentDetails;
     }
 }

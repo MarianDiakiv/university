@@ -2,6 +2,7 @@ package com.marian.university.controller;
 
 import com.marian.university.entity.ERoles;
 import com.marian.university.entity.Role;
+import com.marian.university.entity.StudentDetails;
 import com.marian.university.entity.User;
 import com.marian.university.payload.UserModel;
 import com.marian.university.payload.request.LoginRequest;
@@ -84,6 +85,13 @@ public class AuthController {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
+        /*ResponseEntity<JwtResponse> ok = ResponseEntity.ok(new JwtResponse(
+                jwt,
+                userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                roles
+        ));*/
         System.out.println("email.body\t"+ ok.getBody().getRoles().get(0).toString());
         return ok;
     }
@@ -115,7 +123,7 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest){
         System.out.println("+++++++++++++++++");
         System.out.println(signupRequest.getEmail());
-        if (userRepository.existsByEmail(signupRequest.getUsername())){
+        if (userRepository.existsByUserName(signupRequest.getUsername())){
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
         }
         if (userRepository.existsByEmail(signupRequest.getEmail())){
@@ -145,6 +153,7 @@ public class AuthController {
             });
         }
         user.setRole(roles);
+        user.setStudentDetails(new StudentDetails());// створення студенських можливостей
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User Register successfully"));
 

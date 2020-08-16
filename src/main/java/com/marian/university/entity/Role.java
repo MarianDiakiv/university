@@ -3,7 +3,8 @@ package com.marian.university.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="\"roles\"")
+//@Table(name="\"roles\"")
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +36,5 @@ public class Role {
     public void setNameRole(ERoles nameRole) {
         this.nameRole = nameRole;
     }
+
 }
