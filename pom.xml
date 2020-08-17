@@ -69,6 +69,12 @@
             <artifactId>modelmapper</artifactId>
             <version>2.3.2</version>
         </dependency>
+        <!--mail-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.2.1.RELEASE</version>
+    </dependency>
 
         <!--json web token-->
         <dependency>
@@ -82,18 +88,7 @@
             <version>2.0.1.Final</version>
         </dependency>
 
-<!--MUSQL DELETE IN LASTVERSION-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
 
     </dependencies>
 

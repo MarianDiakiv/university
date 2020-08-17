@@ -13,7 +13,7 @@ public interface LessonService {
     Lesson getById(int id);
     List<Lesson> getAll();
     List<Lesson> getLessonByTeacherDetail(TeacherDetail detail);
-    List<Lesson>getLessonByTeacherDetailAndAndTimelesson( TeacherDetail detail, Date date, Date times, Date timed);
+    List<Lesson> getLessonByTeacherDetailAndAndTimelesson( TeacherDetail detail, Date date, Date times, Date timed);
     List<Lesson> getLessonByTeacherDetailAndStatus( TeacherDetail detail, boolean status);
     MessageResponse update(Lesson lesson);
 

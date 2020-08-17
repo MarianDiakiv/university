@@ -66,32 +66,13 @@ public class AuthController {
             System.out.println(s);
         }
 
-
-
-//        ResponseEntity<?> r;
-//        r = new ResponseEntity.ok(new JwtResponse(
-//                jwt,
-//                userDetails.getId(),
-//                userDetails.getUsername(),
-//                userDetails.getEmail(),
-//                roles                ));
-//        JwtResponse  jwtResponse = new JwtResponse(
-//                jwt,userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),roles
-//        );
-//        System.out.println(jwtResponse.getEmail()+" "+ jwtResponse.getToken());
         ResponseEntity<JwtResponse> ok = ResponseEntity.ok(new JwtResponse(
                 jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
-        /*ResponseEntity<JwtResponse> ok = ResponseEntity.ok(new JwtResponse(
-                jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                roles
-        ));*/
+
         System.out.println("email.body\t"+ ok.getBody().getRoles().get(0).toString());
         return ok;
     }
@@ -106,13 +87,7 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
         System.out.println("CONTROLLER TOKEN\t"+ jwt);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//        List<String> roles = userDetails.getAuthorities().stream()
-//                .map(item-> item.getAuthority())
-//                .collect(Collectors.toList());
-//        System.out.println("ROLEs");
-//        for (String s :roles ) {
-//            System.out.println(s);
-//        }
+
         UserModel modelUser = new UserModel(userDetails,jwt);
 
 

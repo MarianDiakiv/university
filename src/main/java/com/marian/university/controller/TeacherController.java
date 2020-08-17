@@ -18,11 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/open")
+//@RequestMapping("/api/open")
 public class TeacherController {
 
-    /*@Autowired
-    private TeacherDetailRepository teacherDetailRepository;*/
+
     @Autowired
 private SubjectService subjectService;
     @Autowired
@@ -38,10 +37,7 @@ private SubjectService subjectService;
     private StudentServcie studentServcie;
 
 
-//    private FreeTeachersTimeDTO freeTeachersTimeDTO(){
-//        FreeTeachersTimeMapper freeTeachersTimeMapper = new FreeTeachersTimeMapper();
-//
-//    }
+
 // для всіх ролей
     @GetMapping("/allSubject")
     public List<SubjectDTO> getSubject(){
@@ -84,18 +80,7 @@ private SubjectService subjectService;
         }
         return dtos;
     }
-//@GetMapping("/getTimeByTeacherDetid/{id}")
-//public List<FreeTeachersTime> freeTeachersTimeDTO(@PathVariable("id") int id){
-//    TeacherDetail teacherDetail = teacherDetailService.getById(id);
-//    List<FreeTeachersTime>  timeList = freeTeachersTimeService.getByTeacherDetails(teacherDetail);
-////    List<FreeTeachersTimeDTO> dtos = new ArrayList<>();
-//
-//    /*FreeTeachersTimeMapper mapper = new FreeTeachersTimeMapper();
-//    for (FreeTeachersTime f: timeList){
-//        dtos.add(mapper.freeTeachersTimeToDto(f));
-//    }*/
-//    return timeList;
-//}
+
 @PostMapping("/createFreeTime")
 public MessageResponse creaeFreeTime(@RequestBody FreeTeachersTimeDTO dto){
         FreeTeachersTimeMapper mapper = new FreeTeachersTimeMapper();
@@ -161,16 +146,12 @@ public MessageResponse acceptLesson(@PathVariable("id") int id,@PathVariable("st
 @PostMapping("/createLesson")
 public MessageResponse createTeacherLesson(@RequestBody  LessonDTO dto){
         // для студента
-    System.out.println("LESSSSS");
-    System.out.println("Lesson" + dto.getStudentDetailsId());
+
     LessonMapper mapper = new LessonMapper();
     Lesson lesson = mapper.dtoToLesson(dto);
-    System.out.println("+++++++++" + lesson.getDatelesson());
     lesson.setTeacherDetail(teacherDetailService.getById(dto.getTeacherDetailsId()));
     lesson.setStudentDetails(studentServcie.getById(dto.getStudentDetailsId()));
     lesson.setSubject(subjectService.getBuId(dto.getSubjectId()));
-    // Перевірки
-
 
 return lessonService.save(lesson);
 }

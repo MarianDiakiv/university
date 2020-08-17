@@ -57,6 +57,8 @@ public class TestController {
         roles1.add(roles.get(2));// admin
         user1.setRole(roles1);// admin
         user1.setPassword(encoder.encode("123"));
+        user1.setStudentDetails(new StudentDetails());
+        user1.setTeacherDetail(new TeacherDetail());
 
         User user2 = new User();
         user2.setEmail("teache@gmail.com");
@@ -65,6 +67,8 @@ public class TestController {
         roles2.add(roles.get(1));// teacher
         user2.setRole(roles2);//
         user2.setPassword(encoder.encode("123"));
+        user2.setStudentDetails(new StudentDetails());
+        user2.setTeacherDetail(new TeacherDetail());
 
         User user3 = new User();
         user3.setEmail("user@gmail.com");
@@ -73,7 +77,7 @@ public class TestController {
         roles3.add(roles.get(0));// user
         user3.setRole(roles3);//
         user3.setPassword(encoder.encode("123"));
-
+        user3.setStudentDetails(new StudentDetails());
         userService.save(user1);
         userService.save(user2);
         userService.save(user3);
@@ -81,40 +85,5 @@ public class TestController {
         return userService.findAll();
     }
 
-    public String craetetestData(){
-        User user1 = userService.getOne(1);
-        User user2 = userService.getOne(2);
-        User user3 = userService.getOne(3);
-        StudentDetails studentDetails = new StudentDetails();
-        studentDetails.setUser(user3);
-        TeacherDetail teacherDetail = new TeacherDetail();
-        teacherDetail.setUser(user2);
 
-        Subject math = new Subject();
-        math.setNamesubject("Math");
-        Lesson lesson = new Lesson();
-        lesson.setSubject(math);
-        lesson.setStudentDetails(studentDetails);
-        lesson.setTeacherDetail(teacherDetail);
-        lesson.setDatelesson(new Date());
-//        Date date =  LocalDateTime.parse("2020-08-10T06:30:30");
-//        lesson.setTimelesson(new Date().);
-
-
-//        TeacherDetail teacherDetail = new TeacherDetail();
-
-        return "OK";
-    }
-    @GetMapping("/api/open/getUser")
-    public UserEntityDTO getUser(){
-        UserMapper userMapper = new UserMapper();
-        UserEntityDTO dto = userMapper.userToDto(userService.getOne(1));
-        return dto;
-    }
-
-/*    @GetMapping("/api/open/getUser")
-    public User getUser(){
-
-        return userService.getOne(1);
-    }*/
 }

@@ -1,11 +1,16 @@
 package com.marian.university.controller;
 
+import com.marian.university.dto.LessonDTO;
 import com.marian.university.dto.SubjectDTO;
 import com.marian.university.dto.UserEntityDTO;
+import com.marian.university.entity.Lesson;
 import com.marian.university.entity.Subject;
 import com.marian.university.entity.User;
+import com.marian.university.mapper.LessonMapper;
 import com.marian.university.mapper.SubjectMapper;
 import com.marian.university.mapper.UserMapper;
+import com.marian.university.payload.responce.MessageResponse;
+import com.marian.university.service.LessonService;
 import com.marian.university.service.SubjectService;
 import com.marian.university.service.TeacherLessonPriceService;
 import com.marian.university.service.UserService;
@@ -16,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/open")
+//@RequestMapping("/api/open")
 public class StudentController {
 //    private
 
@@ -27,6 +32,9 @@ public class StudentController {
     private TeacherLessonPriceService priceService;
     @Autowired
     private SubjectService subjectService;
+
+    @Autowired
+    private LessonService lessonService;
 
     @GetMapping("/getAllTeacher")
     public List<UserEntityDTO> getAllTeacher(){
@@ -51,8 +59,13 @@ public List<UserEntityDTO> getTeacherBySubjectName(@PathVariable("nameSubject") 
         }
         return dtos;
 
-
 }
+@GetMapping("/canselLessonByStudent/{id}")
+public MessageResponse canselLesson(@PathVariable("id") int id){
+        Lesson lesson = lessonService.getById(id);
+        lesson.setStatus(false);
+    return lessonService.update(lesson);
+    }
 
 
 }

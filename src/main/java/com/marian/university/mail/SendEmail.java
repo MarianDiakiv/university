@@ -7,8 +7,8 @@ import java.util.Properties;
 
 public class SendEmail {
     public void sendEmail(String email, String text){
-        String username = "mariandiakiv@gmail.com";
-        String password = "marian5456801";
+        String username = "username";
+        String password = "password";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -35,8 +35,6 @@ public class SendEmail {
             message.setText(text);
 
             Transport.send(message);
-
-//            System.out.println("Done");
 
         } catch (MessagingException e) {
             e.printStackTrace();

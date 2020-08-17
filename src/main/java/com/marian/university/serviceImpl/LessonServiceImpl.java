@@ -81,7 +81,7 @@ public class LessonServiceImpl implements LessonService {
     public MessageResponse update(Lesson lesson) {
         String status;
         SendEmail sendEmail = new SendEmail();
-        String message = "Статиу вами створеного уроку  "+ lesson.getSubject().getNamesubject()+ "\r\n" +
+        String message = "Статус уроку  "+ lesson.getSubject().getNamesubject()+ "\r\n" +
                 "  Викладач "  + lesson.getTeacherDetail().getUser().getUserName()+" \r\n  дата та час проведення "+ lesson.getDatelesson() +" "+ lesson.getTimelesson()+" "+
                 " Час завершення уроку "+ lesson.getTimeLessonEnd()+" \r\n Статус ";
         if (lesson.isStatus()){
