@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-/*@Table(name="\"free_teachers_time\"")*/
-@Table(name = "free_teachers_time")
+@Table(name="\"free_teachers_time\"")
+//@Table(name = "free_teachers_time")
 public class FreeTeachersTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

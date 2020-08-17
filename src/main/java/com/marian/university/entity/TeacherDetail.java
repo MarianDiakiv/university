@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@Table(name = "\"teacher_detail\"")
-@Table(name = "teacher_detail")
+@Table(name = "\"teacher_detail\"")
+//@Table(name = "teacher_detail")
 public class TeacherDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

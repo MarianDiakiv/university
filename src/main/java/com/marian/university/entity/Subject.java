@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@Table(name="\"subject\"")
-@Table(name = "subject")
+@Table(name="\"subject\"")
+//@Table(name = "subject")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

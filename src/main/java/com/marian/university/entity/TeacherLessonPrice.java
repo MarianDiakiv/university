@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-//@Table(name = "\"teacher_lesson_price\"")
-@Table(name = "teacher_lesson_price")
+@Table(name = "\"teacher_lesson_price\"")
+//@Table(name = "teacher_lesson_price")
 public class TeacherLessonPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

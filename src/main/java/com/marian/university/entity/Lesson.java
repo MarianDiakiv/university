@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-//@Table(name = "\"lesson\"")
-@Table(name = "lesson")
+@Table(name = "\"lesson\"")/**/
+//@Table(name = "lesson")
 public class Lesson {
     // доробити початок і кінець уроку
     @Id
